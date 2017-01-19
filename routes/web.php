@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/todo', function () {
+    return view('todo');
+});
+
 Route::get('processes', 'ProcessController@index');
 Route::get('processes/{process}', 'ProcessController@show')->name('process');
 Route::post('processes', 'ProcessController@store');

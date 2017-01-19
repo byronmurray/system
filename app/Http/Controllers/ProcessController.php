@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Process;
+use App\procedure;
 use Illuminate\Http\Request;
 
 class ProcessController extends Controller
@@ -50,7 +51,15 @@ class ProcessController extends Controller
      */
     public function show(Process $process)
     {
-        return view('processes.show', compact('process'));
+        
+        // get an array of procedures currently that belong to the process
+        $array = $process->procedures->pluck('id');
+
+        // get all procedures except those in the array
+        $proceduresList = Procedure::whereNotIn('id', $array)->get();
+    
+        return view('processes.show', compact('process', 'proceduresList' ));
+
     }
 
     /**

@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 
     <!-- Scripts -->
     <script>
@@ -45,6 +47,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="#">Home</a></li>
                         <li><a href="/processes">Processes</a></li>
+                        <li><a href="/todo">Todo</a></li>
                         <li><a href="#">Dashboard</a></li>
                         <li><a href="#">Documents</a></li>
                     </ul>
@@ -80,8 +83,23 @@
                 </div>
             </div>
         </nav>
+        
+        <!-- main content section -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-1">
+                    <div class="panel panel-default">
+                        @yield('sidebar')
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="panel panel-default">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        @yield('content')
     </div>
 
     <!-- Scripts -->
