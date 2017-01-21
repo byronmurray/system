@@ -2,17 +2,13 @@
 
 @section('sidebar')
 
-    <div class="panel-heading">Side bar</div>
-
-    <div class="panel-body">
-        this is the sidebar
-    </div>
+    @include('sidebars.procedures')
 
 @endsection
 
 @section('content')
 
-    <div class="panel-heading">{{$procedure->title}}</div>
+    <div class="panel-heading">Procedure - {{$procedure->title}}</div>
 
     <div class="panel-body">
         <ol>

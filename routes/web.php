@@ -19,6 +19,15 @@ Route::get('/todo', function () {
     return view('todo');
 });
 
+
+Route::get('/group/{group}', 'ProcessController@showGroupProcesses');
+
+
+Route::get('/search', 'SearchController@index');
+
+Route::post('groups', 'ProcessController@storeGroup');
+
+
 Route::get('processes', 'ProcessController@index');
 Route::get('processes/{process}', 'ProcessController@show')->name('process');
 Route::post('processes', 'ProcessController@store');
@@ -28,6 +37,8 @@ Route::get('procedures/{procedure}', 'ProcedureController@show')->name('procedur
 Route::post('procedures/{process}', 'ProcedureController@store');
 
 Route::post('procedures/{process}/assign', 'ProcedureController@storePovit' );
+Route::post('process/{process}/group', 'ProcessController@storePovit' );
+
 
 
 Route::post('procedures/{procedure}/steps', 'StepController@store');

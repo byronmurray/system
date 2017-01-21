@@ -83,6 +83,22 @@
                 </div>
             </div>
         </nav>
+
+        <div class="container-fluid">
+            <div class="row pull-right">
+                <div class="col-md-12 col-md-offset-1">
+                    {!! Form::open(['method'=>'GET','url'=>'search','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
+
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" name="search" placeholder="Quick Search...">
+                        <span class="input-group-btn">
+                            <button class="btn" type="submit">Search</button>
+                        </span>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
         
         <!-- main content section -->
         <div class="container-fluid">

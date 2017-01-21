@@ -68,7 +68,8 @@ class ProcedureController extends Controller
      */
     public function show(Procedure $procedure)
     {
-        return view('procedures.show', compact('procedure'));
+        $process = Process::find($_GET['id']);
+        return view('procedures.show', compact('procedure', 'process'));
     }
 
     /**

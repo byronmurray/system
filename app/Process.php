@@ -11,4 +11,9 @@ class Process extends Model
     {
     	return $this->belongsToMany(Procedure::class)->withTimestamps();
     }
+
+    public function groups()
+    {
+    	return $this->belongsToMany(Group::class)->withTimestamps();
+    }
 }
