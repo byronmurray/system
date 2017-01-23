@@ -21,6 +21,10 @@
         
         <h2>Other</h2>
         <ul>
+            <li>Validation on all forms</li>
+            <li>Users on all tables and relationships</li>
+            <li>Tidy up urls - Make the title</li>
+            <li>update procedure get var in url (Sidebar dispaly)</li>
             <li>onDelete rules for all tables, and other Column Modifiers for validation</li>
             <li>Update table design with groups</li>
             <li>Update all forms to blade syntax</li>

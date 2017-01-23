@@ -29,7 +29,7 @@ Route::post('groups', 'ProcessController@storeGroup');
 
 
 Route::get('processes', 'ProcessController@index');
-Route::get('processes/{process}', 'ProcessController@show')->name('process');
+Route::get('processes/{slug}', 'ProcessController@show')->name('process');
 Route::post('processes', 'ProcessController@store');
 
 Route::get('procedures', 'ProcedureController@index');

@@ -40,8 +40,17 @@ class ProcessController extends Controller
      */
     public function store(Request $request)
     {
+        
+        function clean($string) {
+           
+           $string = strtolower($string);
+           $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+           return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+        }
+
         $process = new process;
         $process->title = $request->title;
+        $process->slug = clean($request->title);
         $process->save();
         return back();
     }
@@ -81,9 +90,10 @@ class ProcessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Process $process)
+    public function show($slug)
     {
-        
+        $process = Process::where('slug', $slug)->first();
+
         /*load all the processes in the sidebar*/
         $processes = Process::orderBy('title', 'ASC')->get();
 
