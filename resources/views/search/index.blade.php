@@ -20,6 +20,10 @@
                 </li>
             @endforeach
         </ul>
+        <h2>Procedures</h2>
+        <ul class="list-group">
+            <li>Adding this as a test example</li>
+        </ul>
     </div>
  
 @endsection
