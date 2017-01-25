@@ -37,7 +37,7 @@ Route::get('procedures/{procedure}', 'ProcedureController@show')->name('procedur
 Route::post('procedures/{process}', 'ProcedureController@store');
 
 Route::post('procedures/{process}/assign', 'ProcedureController@storePovit' );
-Route::post('process/{process}/group', 'ProcessController@storePovit' );
+Route::post('process/{group}', 'ProcessController@storePovit' );
 
 
 

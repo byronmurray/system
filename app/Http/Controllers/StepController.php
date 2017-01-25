@@ -36,11 +36,12 @@ class StepController extends Controller
      */
     public function store(Request $request, Procedure $procedure)
     {
-        
+        $procedure->steps()->create($request->all());
+/*        
         $step = new Step;
         $step->title = $request->title;
         $step->body = $request->body;
-        $procedure->steps()->save($step);
+        $procedure->steps()->save($step);*/
         return back();
         //return $request->all();
     }

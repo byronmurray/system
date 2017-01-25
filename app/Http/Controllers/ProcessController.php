@@ -63,10 +63,7 @@ class ProcessController extends Controller
      */
     public function storeGroup(Request $request)
     {
-        
-        $group = new Group;
-        $group->title = $request->title;
-        $group->save();
+        Group::create($request->all());
         return back();
     }
 
@@ -76,10 +73,10 @@ class ProcessController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storePovit(Request $request, Process $process)
+    public function storePovit(Request $request, Group $group)
     {
-        //$procedure->processes()->attach($process);
-        $process->groups()->attach($request->group_id);
+
+        $group->processes()->attach($request->process_id);
 
         return back();
     }
@@ -97,17 +94,12 @@ class ProcessController extends Controller
         /*load all the processes in the sidebar*/
         $processes = Process::orderBy('title', 'ASC')->get();
 
-        // get an array of groups currently that belong to the process
-        $array = $process->groups->pluck('id');
-        // get all groups except those in the array
-        $groupsList = Group::whereNotIn('id', $array)->get();
-
         // get an array of procedures currently that belong to the process
         $array = $process->procedures->pluck('id');
         // get all procedures except those in the array
         $proceduresList = Procedure::whereNotIn('id', $array)->get();
     
-        return view('processes.show', compact('process', 'proceduresList', 'processes', 'groupsList' ));
+        return view('processes.show', compact('process', 'proceduresList', 'processes' ));
 
     }
 
@@ -123,7 +115,12 @@ class ProcessController extends Controller
 
         $processes = $group->processes;
 
-        return view('groups.show', compact('groups', 'group', 'processes'));
+        // get an array of processes currently that belong to the group
+        $array = $group->processes->pluck('id');
+        // get all groups except those in the array
+        $processList = Process::whereNotIn('id', $array)->get();
+
+        return view('groups.show', compact('groups', 'group', 'processes', 'processList'));
     }
 
     /**

@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Process extends Model
 {
+
+	protected $fillable = ['title'];
+	
     public function procedures()
     {
     	return $this->belongsToMany(Procedure::class)->withTimestamps();
