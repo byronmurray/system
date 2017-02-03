@@ -17,4 +17,9 @@ class Procedure extends Model
     {
     	return $this->belongsToMany(Process::class)->withTimestamps();
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

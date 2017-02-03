@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Step;
+use Auth;
 use App\Procedure;
 use Illuminate\Http\Request;
 
@@ -36,14 +37,20 @@ class StepController extends Controller
      */
     public function store(Request $request, Procedure $procedure)
     {
-        $procedure->steps()->create($request->all());
-/*        
+
+        $this->validate(request(), [
+            'title' => 'required|min:3|unique:step',
+            'body'  => 'required'
+        ]);
+
         $step = new Step;
+        $step->procedure_id = $procedure->id;
+        $step->user_id = Auth::user()->id;
         $step->title = $request->title;
         $step->body = $request->body;
-        $procedure->steps()->save($step);*/
+        $step->save();
+
         return back();
-        //return $request->all();
     }
 
     /**

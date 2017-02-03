@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Process;
 use App\Procedure;
 use Illuminate\Http\Request;
@@ -9,25 +10,6 @@ use Illuminate\Http\Request;
 
 class ProcedureController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -37,8 +19,22 @@ class ProcedureController extends Controller
      */
     public function store(Request $request, $process)
     {
+
+        function clean($string) {
+           
+           $string = strtolower($string);
+           $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+           return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+        }
+
+        $this->validate(request(), [
+            'title' => 'required|min:3|unique:procedures',
+        ]);
+
         $procedure = new procedure;
+        $procedure->user_id = Auth::user()->id;
         $procedure->title = $request->title;
+        $procedure->slug = clean($request->title);
         $procedure->save();
 
         $procedure->processes()->attach($process);
@@ -66,43 +62,11 @@ class ProcedureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Procedure $procedure)
+    public function show($slug)
     {
+        $procedure = Procedure::where('slug', $slug)->first();
         $process = Process::find($_GET['id']);
         return view('procedures.show', compact('procedure', 'process'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

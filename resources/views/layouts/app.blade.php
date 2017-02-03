@@ -102,16 +102,12 @@
         <!-- main content section -->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3 col-md-offset-1">
-                    <div class="panel panel-default">
-                        @yield('sidebar')
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <div class="panel panel-default">
-                        @yield('content')
-                    </div>
-                </div>
+                
+                @yield('sidebar')
+                
+                
+                @yield('content')
+                
             </div>
         </div>
 

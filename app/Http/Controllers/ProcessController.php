@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Process;
+use Auth;
 use App\Group;
+use App\Process;
 use App\procedure;
 use Illuminate\Http\Request;
 
@@ -48,7 +49,12 @@ class ProcessController extends Controller
            return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
         }
 
-        $process = new process;
+        $this->validate(request(), [
+            'title' => 'required|min:3|unique:processes'
+        ]);
+
+        $process = new Process;
+        $process->user_id = Auth::user()->id;
         $process->title = $request->title;
         $process->slug = clean($request->title);
         $process->save();
@@ -63,7 +69,21 @@ class ProcessController extends Controller
      */
     public function storeGroup(Request $request)
     {
-        Group::create($request->all());
+        function clean($string) {
+           
+           $string = strtolower($string);
+           $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+           return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+        }
+
+        $this->validate(request(), [
+            'title' => 'required|min:3|unique:groups'
+        ]);
+
+        $group = new Group;
+        $group->title = $request->title;
+        $group->slug = clean($request->title);
+        $group->save();
         return back();
     }
 
@@ -109,8 +129,10 @@ class ProcessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showGroupProcesses(Group $group)
+    public function showGroupProcesses($slug)
     {
+        $group = Group::where('slug', $slug)->first();
+
         $groups = Group::all();
 
         $processes = $group->processes;
