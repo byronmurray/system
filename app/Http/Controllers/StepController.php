@@ -9,25 +9,6 @@ use Illuminate\Http\Request;
 
 class StepController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -38,8 +19,10 @@ class StepController extends Controller
     public function store(Request $request, Procedure $procedure)
     {
 
+        //return $request->all();
+
         $this->validate(request(), [
-            'title' => 'required|min:3|unique:step',
+            'title' => 'required|min:3|unique:steps',
             'body'  => 'required'
         ]);
 
@@ -50,30 +33,11 @@ class StepController extends Controller
         $step->body = $request->body;
         $step->save();
 
+        Session()->flash('status', 'New step has been created!');
+
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -82,9 +46,15 @@ class StepController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Step $step)
     {
-        //
+        
+        $step->update($request->all());
+
+        Session()->flash('status', 'Step has been updated!');
+
+
+        return back();
     }
 
     /**

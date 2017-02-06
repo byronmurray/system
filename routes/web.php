@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::get('/group/{slug}', 'ProcessController@showGroupProcesses');
 
 
+
 	Route::get('/search', 'SearchController@index');
 
 	Route::post('groups', 'ProcessController@storeGroup');
@@ -43,6 +44,8 @@ Route::group(['middleware' => ['auth']], function() {
 
 
 	Route::post('procedures/{procedure}/steps', 'StepController@store');
+	Route::patch('/step/{step}', 'StepController@update')->name('step.update');
+
 
 });
 

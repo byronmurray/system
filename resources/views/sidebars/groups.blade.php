@@ -8,6 +8,7 @@
                     @foreach ($groups as $group)
                         <li class="list-group-item">
                             <a href="/group/{{ $group->slug }}">{{$group->title}}</a>
+                            <span>{{ count($group->processes) }}</span>
                         </li>
                     @endforeach
                 </ul>
