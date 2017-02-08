@@ -16,45 +16,76 @@
 
         @include('errors.form')
 
-        <form action="/procedures/{{ $process->id}}" method="POST" id="add_new_procedure_form">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <!-- Button trigger modal -->
             <div class="form-group">
-                <label for="title">New Procedure</label>
-                <input type="text" name="title" class="form-control" required >
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#new-procedure">
+                  New Procedure
+                </button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#assign-procedure">
+                  Assign Procedure
+                </button>
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-defualt" value="Add New">
-            </div>
-        </form>
 
-        <form action="/procedures/{{ $process->id}}/assign" method="POST" id="assign_existing_form">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="form-group">
-                <label for="title">Existing Procedures</label>
-                <select class="form-control" multiple="multiple" id="procedure_id" name="procedure_id[]">
-              
-                  @foreach($proceduresList as $procedure)
-                      <option value="{{$procedure->id}}">{{$procedure->title}}</option>
-                  @endforeach
+            @if ( Session::has('status') )
+              <p class="bg-success" style="padding: 20px;
+              border-radius: 5px;">{{ Session::get('status') }}
+                <button type="button" class="close" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </p>
+            @endif
 
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-defualt" value="Assign">
-            </div>
-        </form>
+            <h2>Procedures</h2>
 
-        <ul class="list-group">
-            @foreach ($process->procedures as $procedure)
-                <li class="list-group-item"><a href="/procedures/{{ $procedure->slug }}?id={{ $process->id }}">{{$procedure->title}}</a></li>
-            @endforeach
-        </ul>
+            <ul class="list-group">
+                @foreach ($process->procedures as $procedure)
+                    <a href="/procedures/{{ $procedure->slug }}?id={{ $process->id }}">
+                        <li class="list-group-item">{{$procedure->title}}
+                            <span class="badge">{{ count( $procedure->steps ) }}</span>
+                        </li>
+                    </a>
+                @endforeach
+            </ul>
 
 
         </div>
     </div>
 </div>
         
+
+
+<div class="modal fade bs-example-modal-lg" id="new-procedure" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Procedure</h4>
+      </div>
+      <div class="modal-body">
+        @include('procedures.create2')
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade bs-example-modal-lg" id="assign-procedure" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Assign Procedure</h4>
+      </div>
+      <div class="modal-body">
+        @include('procedures.assign')
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 
     
 

@@ -11,8 +11,26 @@
     <div class="panel panel-default">
 
         <div class="panel-heading">Group - {{$group->title}}</div>
-
+        
         <div class="panel-body">
+        
+            @if ( Session::has('status') )
+              <p class="bg-success" style="padding: 20px; border-radius: 5px;">
+                {{ Session::get('status') }}
+                <button type="button" class="close" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </p>
+            @endif
+
+            <!-- Button trigger modal -->
+            <div class="form-group">
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#assign-processes">
+                  Assign Processes
+                </button>
+            </div>
+
+        
             <ul class="list-group">
                 @foreach ($processes as $process)
                     <li class="list-group-item">
@@ -21,24 +39,27 @@
                 @endforeach
             </ul>
 
-            <form action="/process/{{$group->id}}" method="POST">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="form-group">
-                    <label for="title">Add Processes</label>
-                    <select class="form-control" multiple="multiple" id="process_id" name="process_id[]">
-                  
-                      @foreach($processList as $process)
-                          <option value="{{$process->id}}">{{$process->title}}</option>
-                      @endforeach
-
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-defualt" value="Add">
-                </div>
-            </form>
         </div>
     </div>
 </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="assign-processes" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" >
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Assign Processes</h4>
+      </div>
+      <div class="modal-body">
+        @include('groups.assign')
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 @endsection

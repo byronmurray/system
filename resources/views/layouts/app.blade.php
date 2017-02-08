@@ -12,6 +12,9 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
 
     <!-- Scripts -->
@@ -30,6 +33,18 @@
         .button-wrap button {
             float: right;
             margin-right: 5px;
+        }
+
+        .btn-top {
+            margin: 15px;
+        }
+
+        .list-group-item {
+            margin: 5px 0;
+        }
+
+        h2, .list-group-item {
+            text-transform: capitalize;
         }
 
     </style>
@@ -128,6 +143,18 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    
+    <!-- Select2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+      $('select').select2();
+
+      $("#procedure_id").select2({
+        placeholder: "Start typing..."
+      });
+
+    </script>
 
     {{-- cdn tinymce text editor --}}
    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>

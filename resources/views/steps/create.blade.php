@@ -11,7 +11,7 @@
     <textarea class="form-control" name="body" id="body" cols="30" rows="10">{{ old('body') }}</textarea>
 </div>
 <div class="form-group">
-    <input type="submit" class="btn btn-defualt" value="Add Step">
+    <input type="submit" class="btn btn-default" value="Add Step">
 </div>
     
 </form>

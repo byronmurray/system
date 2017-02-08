@@ -58,6 +58,9 @@ class ProcessController extends Controller
         $process->title = $request->title;
         $process->slug = clean($request->title);
         $process->save();
+
+        Session()->flash('status', 'New Process has been created!');
+
         return back();
     }
 
@@ -84,6 +87,9 @@ class ProcessController extends Controller
         $group->title = $request->title;
         $group->slug = clean($request->title);
         $group->save();
+
+        Session()->flash('status', 'New Group has been created!');
+
         return back();
     }
 
@@ -97,6 +103,8 @@ class ProcessController extends Controller
     {
 
         $group->processes()->attach($request->process_id);
+
+        Session()->flash('status', 'Processes have been assigned!');
 
         return back();
     }

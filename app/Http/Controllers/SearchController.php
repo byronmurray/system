@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Process;
+use App\Procedure;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -18,7 +19,10 @@ class SearchController extends Controller
 
     	$processes = Process::where('title','like','%'.$search.'%')->orderBy('title')->get();
 
-        return view('search.index', compact('processes'));
+        $procedures = Procedure::where('title','like','%'.$search.'%')->orderBy('title')->get();
+
+
+        return view('search.index', compact('processes', 'procedures'));
     }
 
 }

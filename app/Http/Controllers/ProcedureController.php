@@ -39,6 +39,8 @@ class ProcedureController extends Controller
 
         $procedure->processes()->attach($process);
 
+        Session()->flash('status', 'New Procedure has been created!');
+
         return back();
     }
 
@@ -53,6 +55,8 @@ class ProcedureController extends Controller
         //$procedure->processes()->attach($process);
         $process->procedures()->attach($request->procedure_id);
 
+        Session()->flash('status', 'Procedures have been assigned to the process!');
+
         return back();
     }
 
@@ -65,7 +69,16 @@ class ProcedureController extends Controller
     public function show($slug)
     {
         $procedure = Procedure::where('slug', $slug)->first();
-        $process = Process::find($_GET['id']);
+
+        if ($_GET['id'] != 0) {
+            $process = Process::find($_GET['id']);
+        } else {
+            $process = null;
+        }
+
+
+        
+
         return view('procedures.show', compact('procedure', 'process'));
     }
 

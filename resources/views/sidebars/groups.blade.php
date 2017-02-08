@@ -4,29 +4,52 @@
             
             <div class="panel-body">
 
+                <!-- messages -->
+                @include('errors.form')
+
+                @if ( Session::has('status') )
+                  <p class="bg-success" style="padding: 20px; border-radius: 5px;">
+                    {{ Session::get('status') }}
+                    <button type="button" class="close" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </p>
+                @endif
+
+                <!-- Button trigger modal -->
+                <div class="form-group">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#new-group">
+                      Add New Group
+                    </button>
+                </div>
+
                 <ul class="list-group">
                     @foreach ($groups as $group)
-                        <li class="list-group-item">
-                            <a href="/group/{{ $group->slug }}">{{$group->title}}</a>
-                            <span>{{ count($group->processes) }}</span>
-                        </li>
+                        <a href="/group/{{ $group->slug }}">
+                            <li class="list-group-item">{{$group->title}}
+                                <span class="badge">{{ count($group->processes) }}</span>
+                            </li>
+                        </a>
                     @endforeach
                 </ul>
 
-                {!! Form::open(['method'=>'POST','url'=>'groups'])  !!}
-                    <div class="form-group">
-                        <label for="title">Group title</label>
-                        <input type="text" name="title" class="form-control" required value="{{ old('title') }}">
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-defualt" value="Add New">
-                    </div>
-                {!! Form::close() !!}
-
-                @include('errors.form')
-
-
-            
         </div>
     </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="new-group" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" >
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create New Group</h4>
+      </div>
+      <div class="modal-body">
+        @include('groups.create')
+      </div>
+
+    </div>
+  </div>
 </div>
