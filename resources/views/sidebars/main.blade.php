@@ -4,8 +4,9 @@
 		    
 		<div class="panel-body">
 		    <ul>
-		   	 	<li>this is the main Sidebar</li>
+		   	 	<li>This is the main Sidebar</li>
     		    <li>Will have latest stuff etc</li>
+    		    <li>Dashboard panel if user is logged it</li>
 		    </ul>
 		</div>
 	</div>
