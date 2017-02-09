@@ -42,7 +42,7 @@
                             
                         <div class="button-wrap">
                             <button class="btn btn-default" data-toggle="modal" data-target="#edit-step-{{ $step->id }}">Edit</button>
-                            <button class="btn btn-default">Delete</button>
+                            <button class="btn btn-default" data-toggle="modal" data-target="#delete-step-{{ $step->id }}">Delete</button>
                             <button class="btn btn-default">Move</button>
                         </div>
                         
@@ -65,6 +65,23 @@
                         </div>
                       </div>
                     </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade bs-example-modal-lg" id="delete-step-{{ $step->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" >
+                      <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">{{$step->title}}</h4>
+                          </div>
+                          <div class="modal-body">
+                            @include('steps.delete')
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
                 @endforeach
             </ol>
 

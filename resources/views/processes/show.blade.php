@@ -62,7 +62,7 @@
         <h4 class="modal-title" id="myModalLabel">New Procedure</h4>
       </div>
       <div class="modal-body">
-        @include('procedures.create2')
+        @include('procedures.create')
       </div>
 
     </div>

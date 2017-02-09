@@ -19,9 +19,9 @@
             <h2>Important <small>List of things that need to be done before testing</small></h2>
             <ul>
                 <li>Create some quick and dirty test data</li>
-                <li>steps (Delete)</li>
                 <li>update procedure get var in url (Sidebar display)</li>
                 <li>Update table design with groups (Word DOcs)</li>
+                <li><strike>steps (Delete)</strike></li>
                 <li><strike>User Auth</strike></li>
                 <li><strike>add create/assign buttons for procedure view</strike></li>
                 <li><strike>add create view for procedure (pop up)</strike></li>

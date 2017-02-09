@@ -1,6 +1,6 @@
 <div class="col-md-3 col-md-offset-1">
     <div class="panel panel-default">
-		<div class="panel-heading">Processes</div>
+		<div class="panel-heading"><a href="/processes">Processes</a></div>
 		    
 		<div class="panel-body">
 		        <ul class="list-group">

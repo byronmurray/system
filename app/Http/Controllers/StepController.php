@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Step;
 use Auth;
+use App\Step;
 use App\Procedure;
 use Illuminate\Http\Request;
 
@@ -22,8 +22,7 @@ class StepController extends Controller
         //return $request->all();
 
         $this->validate(request(), [
-            'title' => 'required|min:3|unique:steps',
-            'body'  => 'required'
+            'title' => 'required|min:3|unique:steps'
         ]);
 
         $step = new Step;
@@ -65,6 +64,11 @@ class StepController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        Step::destroy($id);
+
+        Session()->flash('status', 'Step has been deleted!');
+
+        return back();
     }
 }
