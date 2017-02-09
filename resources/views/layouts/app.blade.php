@@ -72,10 +72,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="/processes">Processes</a></li>
-                        <li><a href="/todo">Todo</a></li>
                         <li><a href="#">Dashboard</a></li>
+                        <li><a href="/processes">Processes</a></li>
+                        <li><a href="#">Tasks</a></li>
                         <li><a href="#">Documents</a></li>
                     </ul>
 
