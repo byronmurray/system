@@ -10,7 +10,6 @@
 			<div class="panel-body">
 				This has come from a search result so we cannot display the associated process 
 			</div>
-		
 			
 		@else
 			

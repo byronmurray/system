@@ -25,8 +25,6 @@ Route::group(['middleware' => ['auth']], function() {
 
 	Route::get('/group/{slug}', 'ProcessController@showGroupProcesses');
 
-
-
 	Route::get('/search', 'SearchController@index');
 
 	Route::post('groups', 'ProcessController@storeGroup');

@@ -37,6 +37,7 @@ class ProcedureController extends Controller
         $procedure->slug = clean($request->title);
         $procedure->save();
 
+
         $procedure->processes()->attach($process);
 
         Session()->flash('status', 'New Procedure has been created!');
