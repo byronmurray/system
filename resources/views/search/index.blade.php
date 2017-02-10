@@ -42,7 +42,7 @@
 
                 <ul class="list-group">
                     @foreach ($procedures as $procedure)
-                        <a href="/procedures/{{ $procedure->slug }}?id=0">
+                        <a href="/procedures/{{ $procedure->slug }}">
                             <li class="list-group-item">{{$procedure->title}}
                                 <span class="badge">{{ count( $procedure->steps ) }}</span>
                             </li>

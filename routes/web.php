@@ -21,6 +21,8 @@ Route::get('/todo', function () {
 
 Route::group(['middleware' => ['auth']], function() {
 
+	Route::get('links', 'LinkController@index');
+
 	Route::delete('steps/{step}', 'StepController@destroy')->name('steps.remove');
 
 	Route::get('/group/{slug}', 'ProcessController@showGroupProcesses');

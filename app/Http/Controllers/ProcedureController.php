@@ -71,7 +71,7 @@ class ProcedureController extends Controller
     {
         $procedure = Procedure::where('slug', $slug)->first();
 
-        if ($_GET['id'] != 0) {
+        if ( isset($_GET['id']) ) {
             $process = Process::find($_GET['id']);
         } else {
             $process = null;

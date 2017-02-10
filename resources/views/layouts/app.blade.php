@@ -171,10 +171,10 @@
          "emoticons template paste textcolor colorpicker textpattern"
        ],
        menu: "insert",
-       toolbar: "bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent",
+       toolbar: "bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link",
        relative_urls: false,
-       //link_context_toolbar: true,
-       //link_list: "/links",
+       link_context_toolbar: true,
+       link_list: "/links",
    
        file_browser_callback : function(field_name, url, type, win) {
          var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
