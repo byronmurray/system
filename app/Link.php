@@ -9,4 +9,5 @@ class Link extends Model
     
     public $timestamps = false;
 
+
 }

@@ -15,8 +15,8 @@ class CreateGroupProcessTable extends Migration
     {
         Schema::create('group_process', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('process_id');
-            $table->integer('group_id');
+            $table->integer('process_id')->unique();
+            $table->integer('group_id')->unique();
             $table->timestamps();
         });
     }

@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Step;
-use App\process;
+use App\Process;
 use Illuminate\Database\Eloquent\Model;
 
 class Procedure extends Model

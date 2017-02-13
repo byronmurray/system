@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\User;
+use App\Group;
 use App\Procedure;
 use Illuminate\Database\Eloquent\Model;
 
