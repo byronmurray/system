@@ -12,5 +12,6 @@
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-default" value="Assign Processes">
+        <button data-dismiss="modal" class="btn btn-default">Cancel</button>
     </div>
 </form>

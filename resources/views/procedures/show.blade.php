@@ -41,9 +41,8 @@
                         
                             
                         <div class="button-wrap">
-                            <button class="btn btn-default" data-toggle="modal" data-target="#edit-step-{{ $step->id }}">Edit</button>
-                            <button class="btn btn-default" data-toggle="modal" data-target="#delete-step-{{ $step->id }}">Delete</button>
-                            <button class="btn btn-default">Move</button>
+                            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#edit-step-{{ $step->id }}">Edit</button>
+                            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete-step-{{ $step->id }}">Delete</button>
                         </div>
                         
 

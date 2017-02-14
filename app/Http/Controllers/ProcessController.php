@@ -126,8 +126,13 @@ class ProcessController extends Controller
         $array = $process->procedures->pluck('id');
         // get all procedures except those in the array
         $proceduresList = Procedure::whereNotIn('id', $array)->get();
+
+        // get an array of procedures currently that belong to the process
+        $group_ids = $process->groups->pluck('id');
+        // get all procedures except those in the array
+        $groupList = Group::whereNotIn('id', $group_ids)->get();
     
-        return view('processes.show', compact('process', 'proceduresList', 'processes' ));
+        return view('processes.show', compact('process', 'proceduresList', 'processes' , 'groupList'));
 
     }
 
@@ -149,6 +154,8 @@ class ProcessController extends Controller
         $array = $group->processes->pluck('id');
         // get all groups except those in the array
         $processList = Process::whereNotIn('id', $array)->get();
+
+        
 
         return view('groups.show', compact('groups', 'group', 'processes', 'processList'));
     }

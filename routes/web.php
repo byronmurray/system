@@ -11,6 +11,8 @@
 |
 */
 
+/*All of this needs tiding up, make route resourses etc*/
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -30,6 +32,10 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::get('/search', 'SearchController@index');
 
 	Route::post('groups', 'ProcessController@storeGroup');
+
+	Route::post('groups/{process}', 'GroupController@storePovit');
+
+
 
 
 	Route::get('processes', 'ProcessController@index');

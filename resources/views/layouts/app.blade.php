@@ -47,6 +47,10 @@
             text-transform: capitalize;
         }
 
+        small {
+            font-size: small !important;
+        }
+
     </style>
 </head>
 <body>
@@ -63,10 +67,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -76,6 +77,27 @@
                         <li><a href="/processes">Processes</a></li>
                         <li><a href="#">Tasks</a></li>
                         <li><a href="#">Documents</a></li>
+
+                        @if (!Auth::guest())
+                            <li>
+                                <div class="container-fluid">
+                                    <div class="row pull-right">
+                                        <div class="col-md-12 col-md-offset-1">
+                                            {!! Form::open(['method'=>'GET','url'=>'search','class'=>'navbar-form','role'=>'search'])  !!}
+                    
+                                            <div class="input-group custom-search-form">
+                                                <input type="text" class="form-control" name="search" placeholder="Quick Search...">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="submit">Search</button>
+                                                </span>
+                                            </div>
+                                            {!! Form::close() !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -110,30 +132,19 @@
             </div>
         </nav>
 
-        @if (!Auth::guest())
-            <div class="container-fluid">
-                <div class="row pull-right">
-                    <div class="col-md-12 col-md-offset-1">
-                        {!! Form::open(['method'=>'GET','url'=>'search','class'=>'navbar-form','role'=>'search'])  !!}
+        
 
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" name="search" placeholder="Quick Search...">
-                            <span class="input-group-btn">
-                                <button class="btn" type="submit">Search</button>
-                            </span>
-                        </div>
-                        {!! Form::close() !!}
-                    </div>
-                </div>
-            </div>
-        @endif
+
+
+
+
+
 
         <!-- main content section -->
         <div class="container-fluid">
             <div class="row">
                 
                 @yield('sidebar')
-                
                 
                 @yield('content')
                 
@@ -149,11 +160,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
     <script type="text/javascript">
-      $('select').select2();
-
-      $("#procedure_id").select2({
+      $('select').select2({
         placeholder: "Start typing..."
       });
+     
 
     </script>
 
@@ -172,8 +182,6 @@
        ],
        menu: "insert",
        toolbar: "bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link",
-       relative_urls: false,
-       link_context_toolbar: true,
        link_list: "/links",
    
        file_browser_callback : function(field_name, url, type, win) {

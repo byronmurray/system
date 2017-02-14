@@ -11,7 +11,8 @@
     <textarea class="form-control" name="body" id="body" cols="30" rows="10">{{ $step->body }}</textarea>
 </div>
 <div class="form-group">
-    <input type="submit" class="btn btn-default" value="Edit Step">
+    <input type="submit" class="btn btn-default" value="Update">
+    <button data-dismiss="modal" class="btn btn-default">Cancel</button>
 </div>
     
 {!! Form::close() !!}

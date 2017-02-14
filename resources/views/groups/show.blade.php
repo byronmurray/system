@@ -25,9 +25,8 @@
 
             <!-- Button trigger modal -->
             <div class="form-group">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#assign-processes">
-                  Assign Processes
-                </button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#assign-processes">Assign Processes</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#create-process">New Process</button>
             </div>
 
         
@@ -48,7 +47,7 @@
 
 
 
-<!-- Modal -->
+<!-- Assign Modal -->
 <div class="modal fade bs-example-modal-lg" id="assign-processes" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" >
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -58,6 +57,22 @@
       </div>
       <div class="modal-body">
         @include('groups.assign')
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Create Modal -->
+<div class="modal fade bs-example-modal-lg" id="create-process" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" >
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create New Process</h4>
+      </div>
+      <div class="modal-body">
+        @include('processes.create')
       </div>
 
     </div>

@@ -6,5 +6,6 @@
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-default" value="Add New">
+        <button data-dismiss="modal" class="btn btn-default">Cancel</button>
     </div>
 </form>

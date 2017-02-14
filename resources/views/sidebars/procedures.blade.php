@@ -3,12 +3,14 @@
 
 		@if ( is_null($process) )
 
-			<div class="panel-heading">
-				The Heading
-			</div>
-			    
+			<div class="panel-heading">Side bar</div>
+		    
 			<div class="panel-body">
-				This has come from a search result so we cannot display the associated process 
+			    <ul>
+			   	 	<li>This is the main Sidebar</li>
+	    		    <li>Will have latest stuff etc</li>
+	    		    <li>Dashboard panel</li>
+			    </ul>
 			</div>
 			
 		@else
