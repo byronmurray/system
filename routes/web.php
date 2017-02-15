@@ -14,7 +14,7 @@
 /*All of this needs tiding up, make route resourses etc*/
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('http://dubzz.co.nz/');
 });
 
 Route::get('/todo', function () {
