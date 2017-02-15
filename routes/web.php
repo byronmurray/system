@@ -17,9 +17,6 @@ Route::get('/', function () {
     return redirect('http://dubzz.co.nz/');
 });
 
-Route::get('/home', function () {
-    return redirect('http://dubz.co.nz/login');
-});
 
 Route::get('/todo', function () {
     return view('todo');
