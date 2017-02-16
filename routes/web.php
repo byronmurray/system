@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return redirect('/login');
+    return view('welcome');
 });
 
 
